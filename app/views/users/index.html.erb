@@ -1,0 +1,49 @@
+<h1>Total likes by per user per day</h1>
+<h4>Today is - <%= Date.today %></h4>
+
+<%= content_tag :div, "", id: "totallikebyuser", data: {likedata: @users} %>
+
+
+  <script type="text/javascript">
+    
+    Morris.Bar({
+     element: 'totallikebyuser',
+     data: $('#totallikebyuser').data('likedata'),
+     xkey: 'name',
+     ykeys: ['countlikedbyuser'],
+     labels: ['Total Likes']
+    });
+  </script>
+
+
+ <br/>
+  <br/>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.countlikedbyuser %></td>
+        <td></td>
+          <td></td>
+            <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

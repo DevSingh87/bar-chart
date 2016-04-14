@@ -1,0 +1,50 @@
+<h1>Total likes per product per day</h1>
+<h4>Today is - <%= Date.today %></h4>
+<%= content_tag :div, "", id: "productliked", data: {productlikedata: @products} %>
+
+
+  <script type="text/javascript">
+    
+    Morris.Bar({
+     element: 'productliked',
+     data: $('#productliked').data('productlikedata'),
+     xkey: 'name',
+     ykeys: ['countlike'],
+     labels: ['Total Likes']
+    });
+  </script>
+
+
+  <br/>
+  <br/>
+<meta charset=utf-8 />
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.countlike %></td>
+        <td></td>
+         <td></td>
+          <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
